@@ -8,17 +8,13 @@ A full-stack, enterprise-grade, browser-based **Facial Recognition Attendance Ma
 | :---: | :---: |
 | ![Login Page](docs/screenshots/01_login_page.png) | ![Admin Dashboard](docs/screenshots/02_admin_dashboard.png) |
 
-| 3. Face Attendance Kiosk & Scanner | 4. Real-Time Attendance Logs & Export |
+| 3. Real-Time Attendance Logs & Export | 4. Student Roster & Biometric Status |
 | :---: | :---: |
-| ![Attendance Scanner](docs/screenshots/03_attendance_scanner.png) | ![Attendance Logs](docs/screenshots/04_attendance_logs.png) |
+| ![Attendance Logs](docs/screenshots/03_attendance_logs.png) | ![Student Management](docs/screenshots/04_student_management.png) |
 
-| 5. Student Roster & Biometric Status | 6. Face Enrollment & Landmark Detection |
-| :---: | :---: |
-| ![Student Management](docs/screenshots/05_student_management.png) | ![Face Registration](docs/screenshots/06_face_registration.png) |
-
-| 7. Student Leave Applications & Approvals |
+| 5. Student Leave Applications & Approvals |
 | :---: |
-| ![Leave Applications](docs/screenshots/07_leave_applications.png) |
+| ![Leave Applications](docs/screenshots/05_leave_applications.png) |
 
 ---
 

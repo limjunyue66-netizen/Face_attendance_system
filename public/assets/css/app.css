@@ -1,0 +1,935 @@
+/* ==========================================================================
+   Face Attendance Management System - Master Theme Style
+   Design Philosophy: High-Contrast Black & White Dual-Tone Scheme
+   - Jet-Black Obsidian Sidebar (#0b0f19)
+   - Crisp Bright White Workspace & Cards (#ffffff on #f1f5f9)
+   - Extremely Clear, Neat, High-Contrast & Easy to Read
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Brand Primary - Electric Royal Sapphire */
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-active: #1e40af;
+    --primary-light: #eff6ff;
+    --primary-subtle: #dbeafe;
+    --primary-rgb: 37, 99, 235;
+
+    /* Secondary Neutrals */
+    --secondary: #475569;
+    --secondary-hover: #334155;
+    --secondary-light: #f1f5f9;
+    --secondary-rgb: 71, 85, 105;
+
+    /* High-Contrast Semantic Feedback */
+    --success: #059669;
+    --success-hover: #047857;
+    --success-light: #ecfdf5;
+    --success-border: #a7f3d0;
+
+    --warning: #d97706;
+    --warning-hover: #b45309;
+    --warning-light: #fffbeb;
+    --warning-border: #fde68a;
+
+    --danger: #dc2626;
+    --danger-hover: #b91c1c;
+    --danger-light: #fef2f2;
+    --danger-border: #fecaca;
+
+    --info: #0284c7;
+    --info-hover: #0369a1;
+    --info-light: #f0f9ff;
+    --info-border: #bae6fd;
+
+    /* The Obvious Two Colors: Deep Dark (Sidebar) vs Crisp Light (Content) */
+    --sidebar-bg: #0b0f19;
+    --sidebar-brand-bg: #060910;
+    --sidebar-border: rgba(255, 255, 255, 0.08);
+    --sidebar-text: #94a3b8;
+    --sidebar-text-hover: #ffffff;
+    --sidebar-item-hover: rgba(255, 255, 255, 0.08);
+
+    /* Main Workspace Surface System */
+    --body-bg: #f1f5f9; /* Slate 100: provides sharp contrast against white cards */
+    --surface-card: #ffffff;
+    --border-color: #cbd5e1;
+    --border-light: #e2e8f0;
+
+    /* Typography Contrast Colors */
+    --text-heading: #0f172a; /* Slate 900 */
+    --text-body: #1e293b;    /* Slate 800 */
+    --text-muted: #64748b;   /* Slate 500 */
+    --text-caption: #94a3b8;
+
+    /* Layout Dimensions */
+    --sidebar-width: 275px;
+    --topbar-height: 72px;
+
+    /* Typography */
+    --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+    /* Border Radii */
+    --radius-xs: 6px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 22px;
+    --radius-full: 9999px;
+
+    /* Crisp Elevation Shadows */
+    --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.09), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.06);
+    --shadow-focus: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* ==========================================================================
+   Base Styles & Reset
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--body-bg);
+    color: var(--text-body);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+a:hover {
+    color: var(--primary-hover);
+}
+
+/* ==========================================================================
+   The Dark Zone: Obsidian Jet-Black Sidebar
+   ========================================================================== */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--body-bg);
+}
+
+.app-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.25);
+}
+
+.app-sidebar-brand {
+    height: var(--topbar-height);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    border-bottom: 1px solid var(--sidebar-border);
+    text-decoration: none;
+    gap: 0.85rem;
+    background: var(--sidebar-brand-bg);
+}
+
+.brand-icon-wrapper {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    box-shadow: 0 0 16px rgba(37, 99, 235, 0.5);
+    flex-shrink: 0;
+}
+
+.brand-text-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.22rem;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.brand-text-subtitle {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #94a3b8;
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+}
+
+.app-sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem 0.85rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+
+.app-sidebar-nav::-webkit-scrollbar {
+    width: 5px;
+}
+.app-sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+.app-sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 6px;
+}
+.app-sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.nav-section-title {
+    font-size: 0.685rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #64748b;
+    padding: 0.85rem 0.85rem 0.3rem 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.nav-section-title i {
+    font-size: 0.8rem;
+    color: #475569;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.62rem 0.85rem;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-size: 0.915rem;
+    font-weight: 500;
+    transition: all 0.18s ease;
+    margin-bottom: 0.2rem;
+    position: relative;
+}
+
+.sidebar-link-icon-box {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.06);
+    color: #cbd5e1;
+    font-size: 1rem;
+    transition: all 0.18s ease;
+    flex-shrink: 0;
+}
+
+.sidebar-link:hover {
+    color: #ffffff;
+    background-color: var(--sidebar-item-hover);
+}
+
+.sidebar-link:hover .sidebar-link-icon-box {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+}
+
+/* Active Menu Item on Dark Sidebar: High Contrast Radiant Electric Blue */
+.sidebar-link.active {
+    color: #ffffff;
+    background: #2563eb;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45);
+}
+
+.sidebar-link.active .sidebar-link-icon-box {
+    background-color: rgba(255, 255, 255, 0.22);
+    color: #ffffff;
+    box-shadow: none;
+}
+
+.sidebar-link.active::before {
+    content: '';
+    position: absolute;
+    left: -0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 24px;
+    background-color: #ffffff;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 0 8px #ffffff;
+}
+
+.sidebar-user-footer {
+    padding: 0.95rem 1.15rem;
+    border-top: 1px solid var(--sidebar-border);
+    background: var(--sidebar-brand-bg);
+}
+
+/* ==========================================================================
+   The White Zone: Bright Workspace & High-Contrast Elements
+   ========================================================================== */
+.app-main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: margin-left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.app-topbar {
+    height: var(--topbar-height);
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+}
+
+/* Clear & Neat Dropdown Menu System */
+.dropdown-menu {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: var(--radius-md) !important;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.1) !important;
+    padding: 0.5rem !important;
+    min-width: 220px;
+}
+
+.dropdown-header {
+    color: #64748b !important;
+    font-size: 0.725rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    padding: 0.45rem 0.75rem !important;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #e2e8f0 !important;
+    margin: 0.45rem 0 !important;
+    opacity: 1 !important;
+}
+
+.dropdown-item {
+    font-size: 0.885rem !important;
+    font-weight: 500 !important;
+    color: var(--text-heading) !important;
+    padding: 0.55rem 0.75rem !important;
+    border-radius: var(--radius-sm) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    transition: all 0.15s ease !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background-color: #f1f5f9 !important;
+    color: var(--primary) !important;
+}
+
+.dropdown-item.text-danger:hover, .dropdown-item.text-danger:focus {
+    background-color: #fef2f2 !important;
+    color: #dc2626 !important;
+}
+
+/* Crisp User Profile Pill Button */
+.user-pill-btn {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: var(--radius-full) !important;
+    padding: 0.3rem 0.75rem 0.3rem 0.35rem !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+    transition: all 0.18s ease;
+    cursor: pointer;
+}
+
+.user-pill-btn:hover {
+    border-color: #2563eb !important;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.15);
+}
+
+.app-content {
+    flex: 1;
+    padding: 2rem;
+}
+
+/* Page Header Block */
+.page-header-box {
+    margin-bottom: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+}
+
+.page-subtitle {
+    font-size: 0.885rem;
+    color: var(--text-muted);
+    margin: 0.25rem 0 0 0;
+}
+
+/* ==========================================================================
+   Crisp White Cards (Sharp Contrast against Slate-100 Canvas)
+   ========================================================================== */
+.card-custom {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    overflow: hidden;
+}
+
+.card-custom:hover {
+    box-shadow: 0 8px 20px -2px rgba(15, 23, 42, 0.1);
+    border-color: #94a3b8;
+}
+
+.card-custom .card-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.15rem 1.5rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-custom .card-body {
+    padding: 1.5rem;
+}
+
+/* Stat Metric Cards */
+.stat-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.35rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 6px 12px -2px rgba(15, 23, 42, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px -2px rgba(15, 23, 42, 0.1);
+    border-color: #94a3b8;
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.stat-icon.primary { background-color: #eff6ff; color: #2563eb; }
+.stat-icon.success { background-color: #ecfdf5; color: #059669; }
+.stat-icon.warning { background-color: #fffbeb; color: #d97706; }
+.stat-icon.danger  { background-color: #fef2f2; color: #dc2626; }
+.stat-icon.info    { background-color: #f0f9ff; color: #0284c7; }
+.stat-icon.purple  { background-color: #faf5ff; color: #9333ea; }
+
+.stat-title {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+}
+
+.stat-value {
+    font-size: 1.95rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+}
+
+/* ==========================================================================
+   Badges, Pills & Status Indicators
+   ========================================================================== */
+.badge-status {
+    padding: 0.38rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: 0.775rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    letter-spacing: 0.02em;
+    border: 1px solid transparent;
+}
+
+.badge-status::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* Checked In / Present */
+.status-checked_in, .status-present {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+.status-checked_in::before, .status-present::before {
+    background-color: #059669;
+    box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.25);
+}
+
+/* Checked Out */
+.status-checked_out {
+    background-color: #eff6ff;
+    color: #1e40af;
+    border-color: #bfdbfe;
+}
+.status-checked_out::before {
+    background-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+/* Late */
+.status-late {
+    background-color: #fffbeb;
+    color: #92400e;
+    border-color: #fde68a;
+}
+.status-late::before {
+    background-color: #d97706;
+    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.25);
+}
+
+/* Absent */
+.status-absent {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+.status-absent::before {
+    background-color: #dc2626;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.25);
+}
+
+/* On Leave */
+.status-on_leave {
+    background-color: #faf5ff;
+    color: #6b21a8;
+    border-color: #e9d5ff;
+}
+.status-on_leave::before {
+    background-color: #9333ea;
+    box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.25);
+}
+
+/* Leave: Pending */
+.status-pending {
+    background-color: #fff7ed;
+    color: #9a3412;
+    border-color: #fed7aa;
+}
+.status-pending::before {
+    background-color: #ea580c;
+}
+
+/* Leave: Approved */
+.status-approved {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border-color: #a7f3d0;
+}
+.status-approved::before {
+    background-color: #059669;
+}
+
+/* Leave: Rejected */
+.status-rejected {
+    background-color: #fef2f2;
+    color: #991b1b;
+    border-color: #fecaca;
+}
+.status-rejected::before {
+    background-color: #dc2626;
+}
+
+/* ==========================================================================
+   Clean, Neat & High-Contrast Tables
+   ========================================================================== */
+.table-custom {
+    margin: 0;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-custom thead th {
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 0.775rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid var(--border-color);
+    border-top: none;
+    white-space: nowrap;
+}
+
+.table-custom tbody td {
+    padding: 1.05rem 1.25rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-body);
+    font-size: 0.915rem;
+    background-color: #ffffff;
+    transition: background-color 0.15s ease;
+}
+
+.table-custom tbody tr:hover td {
+    background-color: #f8fafc;
+}
+
+.table-custom tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Avatar Components */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    background-color: #e2e8f0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1e293b;
+    flex-shrink: 0;
+    border: 2px solid #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.avatar-sm { width: 32px; height: 32px; font-size: 0.8rem; }
+.avatar-lg { width: 62px; height: 62px; font-size: 1.5rem; }
+.avatar-xl { width: 94px; height: 94px; font-size: 2.2rem; }
+
+/* ==========================================================================
+   Form Controls & Search Toolbars
+   ========================================================================== */
+.filter-toolbar {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem 1.35rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+}
+
+.form-control, .form-select {
+    border: 1px solid #cbd5e1;
+    border-radius: var(--radius-md);
+    padding: 0.625rem 0.95rem;
+    font-size: 0.915rem;
+    color: var(--text-heading);
+    background-color: #ffffff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-focus);
+    outline: none;
+}
+
+.form-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-heading);
+    margin-bottom: 0.35rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.input-group-text {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: var(--text-muted);
+    border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+    font-weight: 600;
+    font-size: 0.885rem;
+    border-radius: var(--radius-md);
+    padding: 0.6rem 1.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.18s ease;
+}
+
+.btn-sm {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.825rem;
+    border-radius: var(--radius-sm);
+    gap: 0.35rem;
+}
+
+.btn-lg {
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    border-radius: var(--radius-lg);
+    gap: 0.6rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border-color: #93c5fd;
+    background-color: #ffffff;
+}
+
+.btn-outline-primary:hover {
+    color: #ffffff;
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-light {
+    background-color: #ffffff;
+    border-color: var(--border-color);
+    color: var(--text-heading);
+}
+
+.btn-light:hover {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+    color: var(--text-heading);
+}
+
+/* Action Button Icon Groups */
+.btn-action-icon {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background: #ffffff;
+    color: #475569;
+    transition: all 0.15s ease;
+}
+
+.btn-action-icon:hover {
+    color: var(--primary);
+    border-color: #93c5fd;
+    background-color: var(--primary-light);
+}
+
+.btn-action-icon.text-danger:hover {
+    color: var(--danger) !important;
+    border-color: #fca5a5;
+    background-color: var(--danger-light);
+}
+
+/* ==========================================================================
+   Camera Viewport
+   ========================================================================== */
+.camera-container {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background-color: #030712;
+    border: 3px solid #1e293b;
+    box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.camera-video {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform: scaleX(-1);
+}
+
+.camera-overlay-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    transform: scaleX(-1);
+}
+
+.camera-guide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 260px;
+    height: 320px;
+    border: 2px dashed rgba(255, 255, 255, 0.45);
+    border-radius: 40% 40% 45% 45%;
+    pointer-events: none;
+    transition: all 0.25s ease;
+}
+
+.camera-guide.active {
+    border-color: #10b981;
+    border-style: solid;
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+}
+
+.camera-guide.warning {
+    border-color: #f59e0b;
+    border-style: solid;
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+}
+
+.scanner-laser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #38bdf8, #2563eb, transparent);
+    box-shadow: 0 0 15px #38bdf8;
+    animation: scanAnimation 2.4s ease-in-out infinite alternate;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+@keyframes scanAnimation {
+    0% { top: 12%; }
+    100% { top: 88%; }
+}
+
+.hud-pill {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #ffffff;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-full);
+    font-size: 0.825rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   Responsive Overrides
+   ========================================================================== */
+@media (max-width: 991.98px) {
+    .app-sidebar {
+        transform: translateX(-100%);
+    }
+    .app-sidebar.show {
+        transform: translateX(0);
+    }
+    .app-main {
+        margin-left: 0;
+    }
+    .app-topbar {
+        padding: 0 1.25rem;
+    }
+    .app-content {
+        padding: 1.25rem;
+    }
+}

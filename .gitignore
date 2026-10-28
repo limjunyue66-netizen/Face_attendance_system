@@ -1,0 +1,45 @@
+# Environment & Credentials
+.env
+.env.backup
+*.env.*
+
+# Large Archives & Packages
+*.zip
+*.tar.gz
+*.rar
+Face_attendance_system.zip
+
+# User Uploaded Data & Sensitive Media (Biometric & Personal Attachments)
+public/uploads/attendance/*
+!public/uploads/attendance/.gitkeep
+public/uploads/faces/*
+!public/uploads/faces/.gitkeep
+public/uploads/leaves/*
+!public/uploads/leaves/.gitkeep
+public/uploads/reports/*
+!public/uploads/reports/.gitkeep
+
+# Operating System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+._*
+
+# Editor & IDE Directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# Logs & Temporary Files
+*.log
+error_log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+tmp/
+temp/
